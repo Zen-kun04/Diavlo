@@ -2,13 +2,14 @@
   "name": "diavlo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-electron": "tsc electron/main.ts",
-    "start-electron": "electron electron/.",
+    "build-electron": "tsc electron/main.ts electron/preload.ts",
+    "start-electron": "electron electron/main.js",
     "build-parcel": "parcel build src/**/*.ts src/**/*.html src/**/*.scss",
-    "start-parcel": "parcel src/templates/index.html"
+    "start-parcel": "parcel src/templates/index.html",
+    "build-all": "npm run build-electron && npm run build-parcel"
   },
   "repository": {
     "type": "git",
