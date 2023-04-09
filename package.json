@@ -2,14 +2,15 @@
   "name": "diavlo",
   "version": "1.0.0",
   "description": "",
-  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-electron": "tsc electron/main.ts electron/preload.ts",
+    "build-electron": "tsc electron/main.ts electron/preload.ts && node sass.js",
     "start-electron": "electron electron/main.js",
     "build-parcel": "parcel build src/**/*.ts src/**/*.html src/**/*.scss",
-    "start-parcel": "parcel src/templates/index.html",
-    "build-all": "npm run build-electron && npm run build-parcel"
+    "start-parcel": "parcel src/templates/login.html",
+    "build-all": "npm run build-electron && npm run build-parcel",
+    "parcel": "npm run build-parcel && npm run start-parcel",
+    "electron": "npm run build-electron && npm run start-electron"
   },
   "repository": {
     "type": "git",
@@ -22,8 +23,12 @@
   },
   "homepage": "https://github.com/Zen-kun04/Diavlo#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "cssnano": "^5.1.15",
     "electron": "^24.0.0",
+    "node-sass": "^8.0.0",
     "parcel": "^2.8.3",
+    "postcss": "^8.4.21",
     "sass": "^1.61.0",
     "typescript": "^5.0.4"
   }

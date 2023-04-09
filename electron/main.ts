@@ -22,7 +22,7 @@ function createWindow () {
   })
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('../src/templates/index.html')
+  mainWindow.loadFile('../src/templates/login.html')
 
   // Open DevTools - Remove for PRODUCTION!
   mainWindow.webContents.openDevTools();
