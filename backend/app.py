@@ -12,11 +12,11 @@ passphrase = "r8r8Eib)$Z{LwWGvNv~faHk;'H9}OM,~HKQ8XO&n6cj&l]hi4D"
 
 app = Flask(__name__)
 
-def generate_jwt():
+def generate_jwt(username: str, password: str):
     now = datetime.utcnow()
     data = {
-        "username": "Baguette",
-        "password": "MiContraseña123",
+        "username": username,
+        "password": password,
         "exp": (now + timedelta(hours=48)).timestamp(),
     }
 
