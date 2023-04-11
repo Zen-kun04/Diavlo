@@ -1,5 +1,5 @@
 // Modules
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path');
 
 
@@ -16,10 +16,14 @@ function createWindow () {
       // --- !! IMPORTANT !! ---
       // Disable 'contextIsolation' to allow 'nodeIntegration'
       // 'contextIsolation' defaults to "true" as from Electron v12
-      contextIsolation: false,
-      nodeIntegration: true
+      contextIsolation: true,
+      nodeIntegration: false
     }
-  })
+ })
+
+  const mainMenu = Menu.buildFromTemplate([])
+
+  Menu.setApplicationMenu(mainMenu)
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('../src/templates/login.html')
@@ -44,4 +48,12 @@ app.on('window-all-closed', () => {
 // When app icon is clicked and app is running, (macOS) recreate the BrowserWindow
 app.on('activate', () => {
   if (mainWindow === null) createWindow()
+})
+
+
+app.on('web-contents-created', (event, contents) => {
+  contents.on('will-navigate', (event, navigationUrl) => {
+    //const parsedUrl = new URL(navigationUrl)
+    event.preventDefault()
+  })
 })
