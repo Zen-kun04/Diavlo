@@ -1,5 +1,5 @@
 // Modules
-var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow;
+var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
 var path = require('path');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -12,10 +12,12 @@ function createWindow() {
             // --- !! IMPORTANT !! ---
             // Disable 'contextIsolation' to allow 'nodeIntegration'
             // 'contextIsolation' defaults to "true" as from Electron v12
-            contextIsolation: false,
-            nodeIntegration: true
+            contextIsolation: true,
+            nodeIntegration: false
         }
     });
+    var mainMenu = Menu.buildFromTemplate([]);
+    Menu.setApplicationMenu(mainMenu);
     // Load index.html into the new BrowserWindow
     mainWindow.loadFile('../src/templates/login.html');
     // Open DevTools - Remove for PRODUCTION!
@@ -36,4 +38,10 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
     if (mainWindow === null)
         createWindow();
+});
+app.on('web-contents-created', function (event, contents) {
+    contents.on('will-navigate', function (event, navigationUrl) {
+        var parsedUrl = new URL(navigationUrl);
+        event.preventDefault();
+    });
 });
