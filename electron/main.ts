@@ -1,5 +1,5 @@
 // Modules
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, shell} = require('electron')
 const path = require('path');
 
 
@@ -53,7 +53,7 @@ app.on('activate', () => {
 
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-navigate', (event, navigationUrl) => {
-    //const parsedUrl = new URL(navigationUrl)
     event.preventDefault()
+    shell.openExternal(navigationUrl)
   })
 })
