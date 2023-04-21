@@ -18,7 +18,9 @@ function createWindow () {
       // 'contextIsolation' defaults to "true" as from Electron v12
       contextIsolation: true,
       nodeIntegration: false
-    }
+    },
+    icon: path.join(__dirname, '../src/images/logotipo.png')
+    
  })
 
   const mainMenu = Menu.buildFromTemplate([])
@@ -26,7 +28,7 @@ function createWindow () {
   Menu.setApplicationMenu(mainMenu)
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('../src/templates/login.html')
+  mainWindow.loadFile('../src/templates/index.html')
 
   // Open DevTools - Remove for PRODUCTION!
   mainWindow.webContents.openDevTools();
