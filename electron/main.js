@@ -17,10 +17,10 @@ function createWindow() {
         },
         icon: path.join(__dirname, '../src/images/logotipo.png')
     });
-    var mainMenu = Menu.buildFromTemplate([]);
-    Menu.setApplicationMenu(mainMenu);
+    //const mainMenu = Menu.buildFromTemplate([])
+    //Menu.setApplicationMenu(mainMenu)
     // Load index.html into the new BrowserWindow
-    mainWindow.loadFile('../src/templates/login.html');
+    mainWindow.loadFile('../src/templates/index.html');
     // Open DevTools - Remove for PRODUCTION!
     mainWindow.webContents.openDevTools();
     // Listen for window being closed

@@ -1,4 +1,4 @@
-@import url('../css/general.css');
+@import url("../css/general.css");
 
 .login-card {
   margin: auto;
@@ -55,7 +55,12 @@
 .sign-in-button:hover {
   cursor: pointer;
   background-color: #902d2d;
-  transform: scale(1.05); }
+  transform: scale(1.05);
+  mix-blend-mode: lighten;
+  background-position: center;
+  background-image: url("https://thumbs.gfycat.com/AdorableDapperGallowaycow-size_restricted.gif") ;
+  
+}
 
 .login-no-account {
   margin-top: 10px;

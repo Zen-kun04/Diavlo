@@ -1,2 +1,117 @@
 @import url("../css/general.css");
 
+.loggedHeader{
+    background-color: rgb(51, 51, 51);
+    color: #fff;
+    padding: 10px;
+    height: fit-content;
+    margin: 0 auto;
+    z-index: 999;
+    display: flex;
+    position: relative;
+    width: fit-content;
+    float: right;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 31, 31, 0.5);
+    margin-right: 30px;
+    margin-top: 50px;
+
+    mix-blend-mode: screen;
+    background-position: center;
+    background-image: url("https://thumbs.gfycat.com/AdorableDapperGallowaycow-size_restricted.gif") ;
+    
+    box-shadow: 1px 1px 4px 1px rgba(33, 31, 31, 0.6);
+}
+
+.rankImage > img{
+    width: 100px;
+    height: 100px;
+}
+
+.rank-data{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 31, 31, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+   
+}
+
+.rank-data > h3 {
+    color: red;
+    font-weight: bold;
+}
+
+section {
+    top: 50%;
+    height: 100%;
+    position: relative;
+    z-index: 999;
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+}
+
+section > .option-carousel {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.carousel-container {
+    padding: 20px;
+    height: 200px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 31, 31, 0.2);
+    box-shadow: 1px 2px 2px 1px rgba(33, 31, 31, 0.6);
+    border-radius: 25px;
+
+    width: 100%;
+
+}
+
+.finder-container {
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.mc-container{
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-container{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    display: block;
+}
+
+.carousel-button{
+    border: none;
+    color: white;
+    padding: 5px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(33, 31, 31, 0.2);
+    box-shadow: 1px 2px 2px 1px rgba(33, 31, 31, 0.6);
+    border-radius: 10px;
+}

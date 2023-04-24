@@ -3,6 +3,7 @@ const {app, BrowserWindow, Menu, shell} = require('electron')
 const path = require('path');
 
 
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -23,9 +24,9 @@ function createWindow () {
     
  })
 
-  const mainMenu = Menu.buildFromTemplate([])
+  //const mainMenu = Menu.buildFromTemplate([])
 
-  Menu.setApplicationMenu(mainMenu)
+  //Menu.setApplicationMenu(mainMenu)
 
   // Load index.html into the new BrowserWindow
   mainWindow.loadFile('../src/templates/index.html')
