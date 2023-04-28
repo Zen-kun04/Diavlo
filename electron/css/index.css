@@ -1,4 +1,5 @@
 @import url("../css/general.css");
+@import url('https://fonts.cdnfonts.com/css/gotham');
 
 .loggedHeader{
     background-color: rgb(51, 51, 51);
@@ -6,7 +7,7 @@
     padding: 10px;
     height: fit-content;
     margin: 0 auto;
-    z-index: 999;
+    z-index: 99;
     display: flex;
     position: relative;
     width: fit-content;
@@ -51,67 +52,124 @@
     font-weight: bold;
 }
 
-section {
-    top: 50%;
-    height: 100%;
-    position: relative;
-    z-index: 999;
-    width: 30%;
+
+section{
+    position: absolute;
+    color: #fff;
     text-align: center;
-    margin: auto;
-    justify-content: center;
-}
-
-section > .option-carousel {
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    gap: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.carousel-container {
+.options{
+    width: fit-content;
+}
+
+.rankOptions > div,.settings-container {
     padding: 20px;
-    height: 200px;
+    justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(33, 31, 31, 0.2);
-    box-shadow: 1px 2px 2px 1px rgba(33, 31, 31, 0.6);
-    border-radius: 25px;
+    border-radius: 5px;
+    width: 260px;
+    place-self: center;
+    border-radius: 30px;
+}
 
+.rankOptions > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    filter: blur(2px);
+    transition: all 0.2s ease-in-out;
+    height: 420px;
+}
+
+.rankOptions > div:hover {
+    filter: blur(0px);
+
+}
+
+
+.options h3 {
+    color: white;
+    font-weight: bold;
+    font-family: 'Gotham Black','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;
 
 }
 
-.finder-container {
-    justify-content: center;
+
+.rankOptions {
+    display: flex;
     align-items: center;
-    display: none;
+    align-content: space-between;
+    gap: 30px;
 }
 
-.mc-container{
-    justify-content: center;
-    align-items: center;
+.finder-container > img{
+    filter: invert(1);
+}
+
+.settings-container > img {
+    filter: invert(1);
 }
 
 .settings-container{
-    display: none;
-    justify-content: center;
-    align-items: center;
+    width: 50%;
+    height: fit-content;
+    margin: auto;
+    margin-top: 20px;
+
+    transition: all 0.3s ease-in-out;
 }
 
-.active {
-    display: block;
+.rankOptions > div:hover,.settings-container:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+
+    mix-blend-mode: screen;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://thumbs.gfycat.com/AdorableDapperGallowaycow-size_restricted.gif") ;
+    z-index: 999;
+    box-shadow: 1px 1px 4px 0px rgba(145, 25, 25, 0.6);
 }
 
-.carousel-button{
-    border: none;
+.rankOptions > div > p {
+    padding: 20px;
+    background-color: rgba(33, 31, 31, 0.3);
     color: white;
-    padding: 5px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: rgba(33, 31, 31, 0.2);
-    box-shadow: 1px 2px 2px 1px rgba(33, 31, 31, 0.6);
-    border-radius: 10px;
+    border-radius: 20px;
+
 }
+
+.requisitos > p{
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(33, 31, 31, 0.3);
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+
+
+}
+
+@media only screen and (max-height: 750px) {
+    .loggedHeader{
+        padding: 0;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    .loggedHeader > img{
+        height: 10px !important;
+        width: 10px !important;
+    }
+  }
