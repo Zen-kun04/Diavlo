@@ -20,7 +20,7 @@ function createWindow() {
     //const mainMenu = Menu.buildFromTemplate([])
     //Menu.setApplicationMenu(mainMenu)
     // Load index.html into the new BrowserWindow
-    mainWindow.loadFile('../src/templates/index.html');
+    mainWindow.loadFile('../src/templates/diavlomc.html');
     // Open DevTools - Remove for PRODUCTION!
     mainWindow.webContents.openDevTools();
     // Listen for window being closed
