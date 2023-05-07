@@ -51,10 +51,13 @@
 
         <section>
 
+            <h1 class="diavloMCHeader hidden">DIAVLO MC</h1>
+
             <div class="searchBar">
                 <input type="text" placeholder="Nickname de Minecraft" name="search">
                 <button type="submit"><i class="bi bi-search" id="searchButton"></i></button>
             </div>
+            <h3 class="infoUser">Información del usuario:</h3>
             <div class="resultsContainer">
                 <div class="leftPanel">
                     <div class="skinLoaderContainer">
@@ -63,17 +66,66 @@
                             <img src="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay" alt="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay">
                         </div>
                     </div>
-                    <div class="userStatus">
+                    <div class="userStatus hidden">
                         <label></label>
                     </div>
+                    <span class="hidden" id="historyText">Historial de nicks:</span>
                     <div class="nicknameHistoryContainer">
                         <ul class="nicknameList">
-                            
                         </ul>
                     </div>
                 </div>
                 <div class="RightPanel">
                     <div class="resultsWrapper">
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/mc.minemora.net/banner.png"></img>
+                            <span>Contraseña: <strong>ASD52</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                            <span>Email: <strong>paco@gmail.com</strong></span>
+
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/hypixel.net/banner.png"></img>
+                            <span>HASH: <strong>$SHA$24343432454545</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/mc.hycraft.us/banner.png"></img>
+                            <span>Contraseña: <strong>Paquito55</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/mooncraft.es/banner.png"></img>
+                            <span>HASH: <strong>$SHA$24343432454545</strong></span>
+                            <span>SALT: <strong>65656444</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/mc.minemora.net/banner.png"></img>
+                            <span>Contraseña: <strong>ASD52</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/hypixel.net/banner.png"></img>
+                            <span>Contraseña: <strong>paco42</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/hypixel.net/banner.png"></img>
+                            <span>Contraseña: <strong>paco42</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/mc.minemora.net/banner.png"></img>
+                            <span>Contraseña: <strong>ASD52</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
+                        <div class="result">
+                            <img src="http://status.mclive.eu/Diavlo/hypixel.net/banner.png"></img>
+                            <span>Contraseña: <strong>paco42</strong></span>
+                            <span>IP: <strong>134.242.452.2</strong></span>
+                        </div>
 
                     </div>
                 </div>
@@ -86,7 +138,10 @@
     <footer>
         <ul>
             <li><span>Diavlo v3 © 2023</span></li>
+            <li><a href="https://shoppy.gg/@diavlomc" >Tienda</a></li>
             <li><a href="https://discord.gg/programadores" >Discord</a></li>
+            <li><a href="https://t.me/diavlodb" >Telegram</a></li>
+
         </ul>
         
     </footer>
@@ -95,27 +150,40 @@
         const searchButton = document.getElementById("searchButton");
         const searchBar = document.querySelector(".searchBar input");
         const resultsContainer = document.querySelector(".resultsContainer");
+        const historyText = document.getElementById("historyText");
+        const userStatuDiv = document.querySelector(".userStatus");
 
         const skinImg = document.querySelector(".skinContainer img");
         const skinLabel = document.querySelector(".skinContainer label");
         const userStatus = document.querySelector(".userStatus label");
 
+        const nicknameList = document.querySelector(".nicknameList");
+
 
         searchButton.addEventListener("click", () => {
-            
+            nicknameList.childNodes.forEach(n => n.remove());
             fetch(`https://api.mojang.com/users/profiles/minecraft/${searchBar.value}`).then(r => {
                 if(r.ok){
                     r.json().then(d => {
                     skinImg.src = `https://crafatar.com/renders/body/${d.id}?&amp;overlay`
                     skinLabel.innerHTML = d.name;
-                    userStatus.innerHTML = "Premium Account";
+                    userStatus.innerHTML = "Cuenta Premium ✅";
                     
+                    const nick = document.createElement("li");
+                    nick.innerHTML = d.name;
+                    nicknameList.appendChild(nick);
+
+                    userStatuDiv.classList.remove("hidden");
+                    historyText.classList.remove("hidden");
                     
                 })
                 } else {                        
                         skinImg.src = "https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay"
                         skinLabel.innerHTML = searchBar.value;
-                        userStatus.innerHTML = "Cracked Account";
+                        userStatus.innerHTML = "Cuenta cracked ❌";
+
+                        userStatuDiv.classList.add("hidden");
+                        historyText.classList.add("hidden");
                 }
             })
 
