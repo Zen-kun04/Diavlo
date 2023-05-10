@@ -55,7 +55,7 @@
 
             <div class="searchBar">
                 <input type="text" placeholder="Nickname de Minecraft" name="search">
-                <button type="submit"><i class="bi bi-search" id="searchButton"></i></button>
+                <button type="submit" id="searchButton"><i class="bi bi-search"></i></button>
             </div>
             <h3 class="infoUser">Información del usuario:</h3>
             <div class="resultsContainer">
@@ -63,7 +63,7 @@
                     <div class="skinLoaderContainer">
                         <div class="skinContainer">
                             <label></label>
-                            <img src="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay" alt="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay">
+                            <img max-width="120px" max-heigth="270px" width="120px" heigth="270px" src="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay" alt="https://crafatar.com/renders/body/5d6a3a4a-3b7a-4b0a-9b0a-5a9a4a5a6a7a?&amp;overlay">
                         </div>
                     </div>
                     <div class="userStatus hidden">
@@ -147,8 +147,11 @@
     </footer>
 
     <script>
+
+
         const searchButton = document.getElementById("searchButton");
         const searchBar = document.querySelector(".searchBar input");
+
         const resultsContainer = document.querySelector(".resultsContainer");
         const historyText = document.getElementById("historyText");
         const userStatuDiv = document.querySelector(".userStatus");
@@ -161,17 +164,38 @@
 
 
         searchButton.addEventListener("click", () => {
-            nicknameList.childNodes.forEach(n => n.remove());
+            
             fetch(`https://api.mojang.com/users/profiles/minecraft/${searchBar.value}`).then(r => {
                 if(r.ok){
                     r.json().then(d => {
                     skinImg.src = `https://crafatar.com/renders/body/${d.id}?&amp;overlay`
                     skinLabel.innerHTML = d.name;
                     userStatus.innerHTML = "Cuenta Premium ✅";
-                    
-                    const nick = document.createElement("li");
-                    nick.innerHTML = d.name;
-                    nicknameList.appendChild(nick);
+
+                    fetch(`https://laby.net/api/v2/user/${d.id}/get-profile`).then(r => r.json()).then(d => {
+                        for(let i = 0; i < nicknameList.childElementCount; i++){
+                            nicknameList.children[i].remove();
+                        }
+
+                        d.username_history.reverse().forEach(p => {
+                            const nick = document.createElement("li");
+                            const div = document.createElement("div");
+                            div.classList.add("usernameHistoryDiv");
+                            
+                            const username = document.createElement("span");
+                            const date = document.createElement("span");
+
+                            username.innerHTML = p.username;
+                            date.innerHTML = new Date(p.changed_at).toLocaleDateString();
+
+                            div.appendChild(username);
+                            div.appendChild(date);
+                            
+                            nick.appendChild(div);
+                            nicknameList.appendChild(nick);
+                        })
+                        }
+                    )
 
                     userStatuDiv.classList.remove("hidden");
                     historyText.classList.remove("hidden");
@@ -182,7 +206,7 @@
                         skinLabel.innerHTML = searchBar.value;
                         userStatus.innerHTML = "Cuenta cracked ❌";
 
-                        userStatuDiv.classList.add("hidden");
+                        userStatuDiv.classList.remove("hidden");
                         historyText.classList.add("hidden");
                 }
             })

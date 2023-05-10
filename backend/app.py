@@ -41,4 +41,8 @@ Decoded: {decoded_token}"""
 def check_token(token: str):
     return ''
 
+@app.route('/api/v3/', methods=['GET'])
+def api_v3():
+    return {"message": "Hello World!"}
+
 app.run()
