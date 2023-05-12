@@ -1,5 +1,5 @@
 // Modules
-var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu;
+var _a = require('electron'), app = _a.app, BrowserWindow = _a.BrowserWindow, Menu = _a.Menu, shell = _a.shell;
 var path = require('path');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -14,12 +14,13 @@ function createWindow() {
             // 'contextIsolation' defaults to "true" as from Electron v12
             contextIsolation: true,
             nodeIntegration: false
-        }
+        },
+        icon: path.join(__dirname, '../src/images/logotipo.png')
     });
-    var mainMenu = Menu.buildFromTemplate([]);
-    Menu.setApplicationMenu(mainMenu);
+    //const mainMenu = Menu.buildFromTemplate([])
+    //Menu.setApplicationMenu(mainMenu)
     // Load index.html into the new BrowserWindow
-    mainWindow.loadFile('../src/templates/login.html');
+    mainWindow.loadFile('../src/templates/diavlomc.html');
     // Open DevTools - Remove for PRODUCTION!
     mainWindow.webContents.openDevTools();
     // Listen for window being closed
@@ -41,7 +42,7 @@ app.on('activate', function () {
 });
 app.on('web-contents-created', function (event, contents) {
     contents.on('will-navigate', function (event, navigationUrl) {
-        var parsedUrl = new URL(navigationUrl);
         event.preventDefault();
+        shell.openExternal(navigationUrl);
     });
 });

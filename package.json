@@ -10,7 +10,8 @@
     "start-parcel": "parcel src/templates/login.html",
     "build-all": "npm run build-electron && npm run build-parcel",
     "parcel": "npm run build-parcel && npm run start-parcel",
-    "electron": "npm run build-electron && npm run start-electron"
+    "electron": "npm run build-electron && npm run start-electron",
+    "watch": "nodemon --exec npm run electron"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,15 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
     "cssnano": "^5.1.15",
-    "electron": "^24.0.0",
+    "electron": "^24.1.2",
     "node-sass": "^8.0.0",
+    "nodemon": "^2.0.22",
     "parcel": "^2.8.3",
     "postcss": "^8.4.21",
     "sass": "^1.61.0",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1"
   }
 }

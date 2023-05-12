@@ -1,6 +1,7 @@
 // Modules
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, shell} = require('electron')
 const path = require('path');
+
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -18,15 +19,17 @@ function createWindow () {
       // 'contextIsolation' defaults to "true" as from Electron v12
       contextIsolation: true,
       nodeIntegration: false
-    }
+    },
+    icon: path.join(__dirname, '../src/images/logotipo.png')
+    
  })
 
-  const mainMenu = Menu.buildFromTemplate([])
+  //const mainMenu = Menu.buildFromTemplate([])
 
-  Menu.setApplicationMenu(mainMenu)
+  //Menu.setApplicationMenu(mainMenu)
 
   // Load index.html into the new BrowserWindow
-  mainWindow.loadFile('../src/templates/login.html')
+  mainWindow.loadFile('../src/templates/diavlomc.html')
 
   // Open DevTools - Remove for PRODUCTION!
   mainWindow.webContents.openDevTools();
@@ -53,7 +56,7 @@ app.on('activate', () => {
 
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-navigate', (event, navigationUrl) => {
-    //const parsedUrl = new URL(navigationUrl)
     event.preventDefault()
+    shell.openExternal(navigationUrl)
   })
 })
