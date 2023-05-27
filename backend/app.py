@@ -60,4 +60,42 @@ def check_token(token: str):
 def api_v3():
     return {"message": "Hello World!"}
 
+@app.route('/api/v3/<user>', methods=['GET'])
+def testingMCApi(user):
+    data = {
+        'username': user,
+        'results': [
+            {
+                'serverIP': 'hypixel.net',
+                'passwordDecrypted' : 'ASD52',
+                'hash' : None,
+                'salt' : None,
+                'userIP': '134.242.452.2',
+                'email': 'paco@gmail.com'
+            },
+            {
+                'serverIP': 'mc.hycraft.us',
+                'passwordDecrypted' : 'Paquito55',
+                'hash' : None,
+                'salt' : None,
+                'userIP': '134.242.452.2',
+                'email': None
+            },
+            {
+                'serverIP': 'mooncraft.es',
+                'passwordDecrypted' : None,
+                'hash' : '$SHA$24343432454545',
+                'salt' : '65656444',
+                'userIP': '134.242.452.2',
+                'email': None
+            }
+        ]
+    }
+    if user:
+        return data ,200
+    
+    else:
+        return {"Error": "Invalid Username"}, 400
+
+
 app.run()
