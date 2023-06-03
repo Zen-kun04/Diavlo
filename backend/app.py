@@ -88,6 +88,23 @@ def testingMCApi(user):
                 'salt' : '65656444',
                 'userIP': '134.242.452.2',
                 'email': None
+            },
+            
+            {
+                'serverIP': 'mooncraft.es',
+                'passwordDecrypted' : None,
+                'hash' : '$SHA$24343432454545',
+                'salt' : '65656444',
+                'userIP': '134.242.452.2',
+                'email': None
+            },
+            {
+                'serverIP': 'mooncraft.es',
+                'passwordDecrypted' : None,
+                'hash' : '$SHA$24343432454545',
+                'salt' : '65656444',
+                'userIP': '134.242.452.2',
+                'email': None
             }
         ]
     }
